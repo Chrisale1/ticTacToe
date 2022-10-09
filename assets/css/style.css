@@ -23,7 +23,20 @@
    font-family: "oswald", sans-serif;
    color: white;
 }
-.turns{
+#green {
+   color: lightgreen;
+}
+#blue{
+    color: #0000ff;
+}
+#yellow{
+    color: yellow;
+}
+
+#red{
+    color: red;
+}
+.turns {
     margin-top: 1em;
     margin-bottom: 1em;
 }
