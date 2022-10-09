@@ -5,14 +5,14 @@
 }
 
 #main{
-    background-color: rgb(22, 12, 12);
+    background-color: hsl(120, 100%, 0%);
     height: 100vh;
     padding-top: 1px;
 }
 
 #title {
    text-align: center;
-   margin-top: 10%;
+   margin-top: 5%;
    font-size: 40px;
    font-family: "oswald", sans-serif;
    color: white;
@@ -26,4 +26,26 @@
     font-family: "recursive", sans-serif;
     font-size: 20px;
     text-align: center;
+}
+
+.board{
+    margin: 0 auto;
+    width: 360px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.box {
+    border: 1px solid lightgreen;
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    cursor: pointer;
 }
