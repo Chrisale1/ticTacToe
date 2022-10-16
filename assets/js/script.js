@@ -21,7 +21,14 @@ document.addEventListener ("DOMContentLoaded", function(){
 });
 
 function checkClick(){
-    console.log("clicked");
+    /**create a local variable for index of boxes */
+    const boxIndex = this.getAttribute("boxIndex");
+
+    /**check if boxes are empty and will only update if nothing is there */
+    if(options[boxIndex] != "" || !isGameActive){
+        return
+    }
+
 }
 /** to check for click event on boxes, restart button and to check player turns */
 function initializeGame() {
