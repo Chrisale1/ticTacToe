@@ -1,6 +1,6 @@
-document.addEventListener ("DOMContentLoaded", function(){
-    const boxes = document.querySelectorAll('.box');
-    const playerStatus=document.querySelector('#player-status');
+document.addEventListener ("DOMContentLoaded", () => {
+    const boxes = Array.from(document.querySelectorAll('.box'));
+    const playerStatus = document.getElementById('player-status');
     const restartButton = document.getElementById("reset")
 
     const winConditions = [
@@ -16,33 +16,44 @@ document.addEventListener ("DOMContentLoaded", function(){
 
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
-    let isGameActive = true;
+    let isGameActive = false;
+    
+    initializeGame();
+
+    /** to check for click event on boxes, restart button and to check player turns */
+    function initializeGame() {
+        boxes.forEach(box => box.addEventListener('click', checkClick)
+        );
+        restartButton.addEventListener('click', resetGame);
+        playerStatus.textContent = `${currentPlayer}'s turns`;
+        isGameActive = true;
+        
+    };
+
+    function checkClick(){
+        /**create a local variable for index of boxes */
+        const boxIndex = this.getAttribute("cellIndex");
+    
+        /**check if boxes are empty and will only update if nothing is there */
+        if(board[boxIndex] != "" || !isGameActive){
+            return
+        }
+        updateBoard(this, boxIndex)
+        checkForWinner();
+    
+    };
+
+    function updateBoard(box, index){
+      board[index] = currentPlayer;
+      box.textContent = currentPlayer;
+    }
+    
    
 });
 
-function checkClick(){
-    /**create a local variable for index of boxes */
-    const boxIndex = this.getAttribute("boxIndex");
 
-    /**check if boxes are empty and will only update if nothing is there */
-    if(options[boxIndex] != "" || !isGameActive){
-        return
-    }
 
-}
-/** to check for click event on boxes, restart button and to check player turns */
-function initializeGame() {
-    boxes.forEach(box =>{
-        box.addEventListener('click', checkClick, {once:true})
-    });
-    restartButton.addEventListener('click', resetGame);
-    playerStatus.textContent = `${currentPlayer}'s turns`;
 
-    
-}
-function updateBoard(box, index){
-
-}
 
 
 function changePlayer() {
