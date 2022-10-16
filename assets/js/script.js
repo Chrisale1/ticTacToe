@@ -38,7 +38,8 @@ document.addEventListener ("DOMContentLoaded", () => {
         if(board[boxIndex] != "" || !isGameActive){
             return
         }
-        updateBoard(this, boxIndex)
+        updateBoard(this, boxIndex);
+       /* changePlayer();*/
         checkForWinner();
     
     };
@@ -46,7 +47,14 @@ document.addEventListener ("DOMContentLoaded", () => {
     function updateBoard(box, index){
       board[index] = currentPlayer;
       box.textContent = currentPlayer;
-    }
+    };
+    
+    /**Function for swapping players  */
+    function changePlayer() {
+        currentPlayer = (currentPlayer === "X"  ? 'O' : 'X');
+        playerStatus.textContent = `${currentPlayer}'s turns`;
+    
+    } ;
     
    
 });
@@ -56,9 +64,7 @@ document.addEventListener ("DOMContentLoaded", () => {
 
 
 
-function changePlayer() {
-    
-}
+
 
 function checkForWinner(){
 
