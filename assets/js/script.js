@@ -1,5 +1,6 @@
 document.addEventListener ("DOMContentLoaded", function(){
     const boxes = document.querySelectorAll('.box');
+    const playerStatus=document.querySelector('#player-status');
     const restartButton = document.getElementById("reset")
 
     const winConditions = [
@@ -16,29 +17,26 @@ document.addEventListener ("DOMContentLoaded", function(){
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
-
    
-
-
-   /* boxes.forEach(box =>{
-        box.addEventListener('click', checkClick, {once:true})
-    })
-
-
-    restartButton.addEventListener('click', resetGame)*/
-
 });
 
 function checkClick(){
     console.log("clicked");
 }
+/** to check for click event on boxes, restart button and to check player turns */
+function initializeGame() {
+    boxes.forEach(box =>{
+        box.addEventListener('click', checkClick, {once:true})
+    });
+    restartButton.addEventListener('click', resetGame);
+    playerStatus.textContent = `${currentPlayer}'s turns`;
 
-function resetGame() {
     
 }
-function endGame() {
-    
+function updateBoard(box, index){
+
 }
+
 
 function changePlayer() {
     
@@ -48,6 +46,6 @@ function checkForWinner(){
 
 }
 
-function checkForDraw(){
+function resetGame(){
     
 }
