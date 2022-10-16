@@ -82,12 +82,7 @@
 }
 /*style for the message popup when game is finished*/
 .message {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(228, 232, 233, 0.9);
+    padding-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,7 +90,7 @@
     font-size: 3rem;
     /*font-family: "recursive", sans-serif;*/
     flex-direction: column;
-    display: none;
+    
 }
 
 .message button{
@@ -114,7 +109,11 @@
   color: #0000ff;
   border-color: #0000ff;
 }
-/*to show hidden message*/
+
+.hide {
+    display: none;
+}
+/*to show hidden message
 .message .show{
     display: flex;
-}
+}*/
