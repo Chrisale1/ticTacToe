@@ -5,12 +5,12 @@ window.addEventListener ("DOMContentLoaded", function(){
     const messageBoard = document.getElementById('message');
     const messageText= document.querySelector("data-message-text");
     const restartButton = document.getElementById("reset")
-    const boardOptions = ["", "", "", "", "", "", "", "", ""];
+    const boardOptions = [];
     const X_Player = 'X';
     const O_Player = 'O';
     let currentPlayer = X_Player;
     
-   /*const winConditions = [
+   const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -19,30 +19,33 @@ window.addEventListener ("DOMContentLoaded", function(){
         [2, 5, 8],
         [0, 4, 8],
         [2, 4, 6]
-    ];*/
+    ];
     
-    /*initializeGame();
-
-    restartButton.addEventListener('click', initializeGame);*/
-    boxIndex.forEach(box =>{
+    initializeGame();
+    function initializeGame(){
+        restartButton.addEventListener('click', resetGame);
+        boxIndex.forEach(box =>{
         box.addEventListener('click', checkClick, {once:true})
     });
+
+    }
+    
 
     
 
     function checkClick(e){
         const id = e.target.id;
-        console.log(id);
+        
         if (!boardOptions[id]){
             
             boardOptions[id]=currentPlayer;
             e.target.innerText = currentPlayer;
             
-           /* if(checkForWinner(currentPlayer)){
+            if(checkForWinner(currentPlayer)){
                 messageBoard.innerText = `${currentPlayer} Wins!!!`;
                 messageBoard.classList.remove('hide');
                 return;
-            }*/
+            }
             changePlayer();
 
             
@@ -57,29 +60,35 @@ window.addEventListener ("DOMContentLoaded", function(){
     
     } ;
 
-    /*function checkForWinner(){
+    function checkForWinner(){
         
-        for(let i = 0; i <= winConditions.length; i++){
-            const condition = winConditions[i];
-            
+        for(const condition of winConditions){
+
             const cellA = boardOptions[condition[0]];
             const cellB = boardOptions[condition[1]];
             const cellC = boardOptions[condition[2]];
 
-            if(cellA === "" || cellB === "" || cellC === ""){
-                continue;
-            }
+          
             if(cellA == cellB && cellB == cellC){
                 return [cellA, cellB, cellC]
             };
 
-            
-
+            return;
         }
 
-    }*/
+    }
 
+    function resetGame(){
+        boardOptions.forEach((boardOption, index) => {
+            boardOptions[index] = "";
 
+        });
+        boxIndex.forEach(box => {
+            box.innerText = "";
+        })
+        messageBoard.classList.add('hide');
+        currentPlayer = X_Player;
+    };
    
   
 });
