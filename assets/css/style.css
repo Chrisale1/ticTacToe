@@ -11,7 +11,7 @@
 }
 
 #main{
-    background-color:rgb(10, 9, 9);
+    background-color:rgb(42, 39, 39);
     height: 100vh;
     padding-top: 1px;
 }
@@ -73,13 +73,6 @@
     color: #f0f8ff;
 }
 
-.playerX {
-    color: #09C372;
-}
-
-.playerO {
-    color: #498AFB;
-}
 /*style for the message popup when game is finished*/
 .message {
     padding-top: 5px;

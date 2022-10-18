@@ -1,11 +1,16 @@
 window.addEventListener ("DOMContentLoaded", function(){
-    const boxes = Array.from(document.querySelectorAll('.box'));
+    const boxIndex = document.querySelectorAll("[data-box]");
+    const boxes = Array.from(document.getElementsByClassName('box'))
     const playerStatus = document.getElementById('player-status');
     const messageBoard = document.getElementById('message');
     const messageText= document.querySelector("data-message-text");
     const restartButton = document.getElementById("reset")
+    const boardOptions = ["", "", "", "", "", "", "", "", ""];
+    const X_Player = 'X';
+    const O_Player = 'O';
+    let currentPlayer = X_Player;
     
-    const winConditions = [
+   /*const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -14,28 +19,52 @@ window.addEventListener ("DOMContentLoaded", function(){
         [2, 5, 8],
         [0, 4, 8],
         [2, 4, 6]
-    ];
+    ];*/
+    
+    /*initializeGame();
 
-    let boardOptions = ["", "", "", "", "", "", "", "", ""];
+    restartButton.addEventListener('click', initializeGame);*/
+    boxIndex.forEach(box =>{
+        box.addEventListener('click', checkClick, {once:true})
+    });
+
+    function checkClick(e){
+        const id = e.target.id;
+        console.log(id);
+        if (!boardOptions[id]){
+            boardOptions[id]=currentPlayer;
+            e.target.innerText = currentPlayer;
+            currentPlayer = currentPlayer === X_Player ? O_Player : X_Player;
+        }
+        
+    
+    }
+
+   
+  
+});
+  /*let boardOptions = ["", "", "", "", "", "", "", "", ""];
     let currentPlayer = 'X';
-    let isGameActive = false;
+    
     
     initializeGame();
 
-    /** to check for click event on boxes, restart button and to check player turns */
+    restartButton.addEventListener('click', initializeGame);
+
+    /** to check for click event on boxes, restart button and to check player turns 
     function initializeGame() {
-        boxes.forEach(box => box.addEventListener('click', checkClick));
-        restartButton.addEventListener('click', resetGame);
+        box.forEach(box => box.addEventListener('click', checkClick));
+        
         playerStatus.textContent = `${currentPlayer}'s turns`;
         isGameActive = true;
         
     };
 
     function checkClick(){
-        /**create a local variable for index of boxes */
-        const boxIndex = this.getAttribute("cellIndex");
+        /**create a local variable for index of boxes 
+        
     
-        /**check if boxes are empty and will only update if nothing is there */
+        /**check if boxes are empty and will only update if nothing is there 
         if(boardOptions[boxIndex] != "" || !isGameActive){
             return
         }
@@ -51,7 +80,7 @@ window.addEventListener ("DOMContentLoaded", function(){
       box.textContent = currentPlayer;
     };
     
-    /**Function for swapping players  */
+    /**Function for swapping players  
     function changePlayer() {
         currentPlayer = (currentPlayer === "X"? 'O' : 'X');
         playerStatus.textContent = `${currentPlayer}'s turns`;
@@ -95,9 +124,7 @@ window.addEventListener ("DOMContentLoaded", function(){
 
     function resetGame(){
     
-    };
-});
-
+    };*/
 
 
 
