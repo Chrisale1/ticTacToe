@@ -28,17 +28,57 @@ window.addEventListener ("DOMContentLoaded", function(){
         box.addEventListener('click', checkClick, {once:true})
     });
 
+    
+
     function checkClick(e){
         const id = e.target.id;
         console.log(id);
         if (!boardOptions[id]){
+            
             boardOptions[id]=currentPlayer;
             e.target.innerText = currentPlayer;
-            currentPlayer = currentPlayer === X_Player ? O_Player : X_Player;
+            
+           /* if(checkForWinner(currentPlayer)){
+                messageBoard.innerText = `${currentPlayer} Wins!!!`;
+                messageBoard.classList.remove('hide');
+                return;
+            }*/
+            changePlayer();
+
+            
         }
         
     
     }
+    function changePlayer() {
+        currentPlayer = currentPlayer === X_Player ? O_Player : X_Player;
+        
+        playerStatus.textContent = `${currentPlayer}'s turns`;
+    
+    } ;
+
+    /*function checkForWinner(){
+        
+        for(let i = 0; i <= winConditions.length; i++){
+            const condition = winConditions[i];
+            
+            const cellA = boardOptions[condition[0]];
+            const cellB = boardOptions[condition[1]];
+            const cellC = boardOptions[condition[2]];
+
+            if(cellA === "" || cellB === "" || cellC === ""){
+                continue;
+            }
+            if(cellA == cellB && cellB == cellC){
+                return [cellA, cellB, cellC]
+            };
+
+            
+
+        }
+
+    }*/
+
 
    
   
